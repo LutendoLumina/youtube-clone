@@ -14,6 +14,7 @@ body {
     font-variation-settings: "wdth" 100;
 }
 
+/* navigation */
 nav {
     display: flex;
     justify-content: space-between;
@@ -59,8 +60,26 @@ nav .searchbar {
     padding: 2px;
 }
 
+.dark-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 32px;
+    color: #606060;
+}
+
 nav .rightnav {
     display: flex;
+    /* justify-content: space-between; */
+    gap: 7px;
+}
+.rightnav .create {
+    border-radius: 4px;
+}
+.rightnav img {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
 }
 
 .material-icons {
@@ -85,10 +104,11 @@ main {
     overflow: hidden;
 }
 
+/* sidebar */
 .categories {
     width: 240px;
     height: 100%;
-    background-color: white;
+    background-color: #00000000;
     overflow-y: scroll;
 }
 
@@ -141,6 +161,7 @@ main {
     color: red;
 }
 
+/* sidebar footer */
 .footer {
     margin: 25px;
 }
@@ -158,6 +179,8 @@ main {
     font-size: 12px;
     font-weight: 500;
 }
+
+/* videos */
 .videos {
     width: calc(100vw - 240px);
     height: 100%;
@@ -168,14 +191,50 @@ main {
 .video-grid {
     display: flex;
     padding: 15px;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    gap: 10px;
+}
+
+.video-card {
+    transition: transform .2s;
+    /* border: 20px 10px; */
+    padding: 8px;
+    position: relative;
+}
+
+.video-card:hover {
+    transform: scale(1.02);
+    background-color: antiquewhite;
+    border-radius: 20px;
+}
+
+/* invisible link covering the whole card */
+.card-link {
+    position: absolute;
+    inset: 0;              /* top:0 right:0 bottom:0 left:0 */
+    z-index: 1;
+}
+
+/* make author + dots clickable ABOVE overlay */
+.author,
+.video-options {
+  position: relative;
+  z-index: 2;
 }
 
 .video {
-    width: 25%;
+    /* 3 videos per row */
+    width: 380px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    
 }
 
 .video .thumbnail img {
     width: 100%;
+    border-radius: 20px;
 }
 
 .video .details {
@@ -190,9 +249,44 @@ main {
 .video .profile img {
     border-radius: 50%;
     width: 36px;
-    height: 36px;
+    /* height: 36px;
+    margin-bottom: 5px;
+    margin-top: 5px; */
+    margin-left: 10px;
 }
 .video .video-title {
-    font-size:  14px;
-    font-weight:  500;
+    font-size:  16px;
+    font-weight:  700;
+    color: #000000;
+    /* margin-bottom: 5px; */
+}
+.video .author {
+    font-size: 14px;
+    font-weight: 400;
+    color: #606060;
+    text-decoration: none;
+}
+.video .author:hover {
+    text-decoration: none;
+    color: #000000;
+}
+.video .time {
+    font-size: 14px;
+    font-weight: 400;
+    color: #606060;
+    margin-top: 3px;
+}
+
+.video-options {
+    margin-left: auto;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s ease;
+}
+.video-options:hover {
+    background: #cac8c8;
 }
