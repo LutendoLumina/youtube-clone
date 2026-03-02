@@ -1,0 +1,160 @@
+
+/* ---------- Large laptops / small desktops ---------- */
+@media (max-width: 1200px){
+    .search{ width: 480px; }
+  
+    .video-grid{
+      grid-template-columns: repeat(2, minmax(240px, 1fr));
+      gap: 20px;
+    }
+  
+    .yt-shorts-grid{
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+  }
+  
+  /* ---------- Tablets ---------- */
+  @media (max-width: 900px){
+    nav{ padding: 0 10px; }
+    nav .logo{ margin-left: 4px; }
+  
+    /* Search */
+    nav .searchbar{ flex: 1; min-width: 0; justify-content: center; }
+    .search{ width: min(520px, 100%); }
+    .search input{ padding: 9px 10px; }
+    .search button{ width: 54px; }
+  
+    /* Right side */
+    .theme-text{ display:none; }
+    .rightnav .create i:last-child{ display:none; } /* hide “Create” text */
+    .rightnav .create{ padding: 6px 10px; }
+    nav .rightnav{ gap: 8px; }
+  
+    /* Sidebar a bit slimmer in tablet mode */
+    aside{ width: 220px; }
+    main:has(#sidebar-toggle:checked) aside{ width: 76px; }
+  
+    /* Content paddings */
+    .videos{ padding: 14px 16px 28px; }
+    .chipbar{ padding: 10px 12px; }
+  
+    .yt-shorts-grid{ grid-template-columns: repeat(3, 1fr); }
+  }
+  
+  /* ---------- Large phones / small tablets ---------- */
+  @media (max-width: 700px){
+    /* Keep navbar from wrapping */
+    nav{ gap: 10px; }
+    nav .searchbar{ gap: 8px; }
+  
+    /* Hide mic to save space */
+    .mic-btn{ display:none; }
+  
+    /* Further reduce search */
+    .search{ width: 100%; }
+  
+    /* Video grid*/
+    .video-grid{
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+  
+    /* Shorts */
+    .yt-shorts-grid{
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+  
+    .playlist-card{ flex-basis: 220px; }
+  }
+  
+  /* ---------- Phones ---------- */
+  @media (max-width: 520px){
+    /* Navbar: hide less-important controls */
+    .rightnav .create{ display:none; }          /* hide create pill */
+    nav .rightnav i.material-icons{ display:none; } /* hide notifications icon */
+    .theme-btn{ padding: 6px 8px; }
+    .theme-track{ width: 40px; height: 22px; }
+    .theme-thumb{ width: 16px; height: 16px; }
+    nav .rightnav{ gap: 6px; }
+  
+    /* Make search input smaller */
+    .search input{ font-size: 14px; }
+    .search button i{ font-size: 20px; }
+  
+    /* Off-canvas sidebar (mobile drawer) */
+    main{ position: relative; }
+    aside{
+      position: fixed;
+      top: 56px;
+      left: 0;
+      height: calc(100vh - 56px);
+      width: min(86vw, 320px);
+      z-index: 60;
+  
+      transform: translateX(-102%);
+      transition: transform .25s ease, width .25s ease;
+      box-shadow: var(--shadow);
+    }
+  
+    /* When toggled ON, slide in */
+    main:has(#sidebar-toggle:checked) aside{
+      transform: translateX(0);
+      width: min(86vw, 320px);
+    }
+  
+    /* When drawer is open, prevent page scroll */
+    body:has(#sidebar-toggle:checked){
+      overflow: hidden;
+    }
+  
+    /* Backdrop overlay using ::before on content (no extra HTML needed) */
+    .content{ position: relative; }
+    .content::before{
+      content: "";
+      position: fixed;
+      inset: 56px 0 0 0;
+      background: rgba(0,0,0,0.45);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease;
+      z-index: 50;
+    }
+    main:has(#sidebar-toggle:checked) .content::before{
+      opacity: 1;
+      pointer-events: auto;
+    }
+  
+    /* Tighten paddings */
+    .chipbar{ padding: 10px 10px; gap: 8px; }
+    .videos{ padding: 12px 10px 22px; }
+  
+    /* Shorts: keep them smaller on phones */
+    .yt-shorts-grid{
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .yt-short-title{
+      font-size: 13px;
+      -webkit-line-clamp: 1;
+    }
+
+    .yt-short-views{
+      font-size: 12px;
+      margin-top: 4px;
+    }
+  
+    /* Playlist cards even narrower */
+    .playlist-card{ flex-basis: 200px; }
+  }
+  
+  /* ---------- Ultra small phones ---------- */
+  @media (max-width: 380px){
+    /* Hide theme toggle text already hidden; shrink search button */
+    .search button{ width: 48px; }
+    .sidebar-toggle-label{ padding: 6px; }
+    .rightnav img.user-profile{ width: 28px; height: 28px; }
+  }
+  
