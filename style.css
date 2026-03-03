@@ -613,6 +613,137 @@ main:has(#sidebar-toggle:checked) footer{ display:none; }
 }
 
 /* =========================
+   AD CARD ONLY (Coursera)
+========================= */
+
+.ad-card .video-duration{
+  position:absolute;
+  bottom:8px;
+  right:8px;
+
+  background: rgba(0,0,0,0.8);
+  color:#fff;
+  font-size:12px;
+  font-weight:600;
+  padding:3px 6px;
+  border-radius:4px;
+  z-index:2;
+}
+
+/* floating arrow */
+.ad-card .ad-arrow{
+  position:absolute;
+  bottom:12px;
+  right:12px;
+
+  width:40px;
+  height:40px;
+  border-radius:50%;
+
+  background: rgba(0,0,0,0.75);
+  color:#fff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  opacity:0;
+  transform: translateY(6px);
+  transition: opacity .25s ease, transform .25s ease;
+  z-index:3;
+}
+
+.ad-card:hover .ad-arrow{
+  opacity:1;
+  transform: translateY(0);
+}
+
+.ad-card .ad-arrow i{
+  font-size:20px;
+}
+
+/* =========================
+   AD LEARN MORE OVERLAY
+========================= */
+
+.ad-card .thumbnail::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.55) 0%,
+    rgba(0,0,0,0.2) 40%,
+    transparent 70%
+  );
+  opacity:0;
+  transition: opacity .3s ease;
+  z-index:1;
+}
+
+.ad-card:hover .thumbnail::after{
+  opacity:1;
+}
+
+/* learn more pill */
+.ad-card .ad-learn-more{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  z-index:5;
+  text-decoration: none;
+
+  display:flex;
+  align-items:center;
+  gap:6px;
+
+  padding:8px 14px;
+  border-radius:999px;
+
+  background:#fff;
+  color:#000;
+
+  font-size:14px;
+  font-weight:600;
+
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+
+  opacity:0;
+  transition:opacity .25s ease, transform .25s ease;
+}
+
+.ad-card:hover .ad-learn-more{
+  opacity:1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* =========================
+   VIDEO DURATION BADGE
+========================= */
+.video .thumbnail{
+  position: relative;
+}
+
+.video-duration{
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  padding: 3px 6px;
+  border-radius: 4px;
+
+  z-index: 2;
+}
+
+
+/* =========================
    PLAYLISTS SECTION
 ========================= */
 .playlists-section{ margin-top: 32px; }
@@ -777,6 +908,26 @@ main:has(#sidebar-toggle:checked) footer{ display:none; }
 .video-options{
   position:relative;
   z-index:2;
+}
+
+/* =========================
+   VERIFIED BADGE
+========================= */
+
+.author{
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.verified-badge{
+  display: inline-flex;
+  align-items: center;
+}
+
+.verified-badge i{
+  font-size: 16px;
+  color: #3ea6ff; /* YouTube blue */
 }
 
 .video{ width: 100%; }
